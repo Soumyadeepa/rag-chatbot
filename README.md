@@ -2,9 +2,23 @@
 
 ## Overview
 
-This project is a Retrieval-Augmented Generation (RAG) chatbot built using FastAPI, LangChain, ChromaDB, HuggingFace Embeddings, Groq LLM, and React.
+This project is a Retrieval-Augmented Generation (RAG) chatbot built as part of the AI Engineer Take-Home Assignment.
 
-The chatbot answers user questions based exclusively on the provided Agarwal Constructions knowledge base PDF. Relevant document chunks are retrieved from a vector database and supplied to the language model as context before generating a response.
+The chatbot answers user questions using information from a company knowledge base PDF. Instead of relying solely on the language model's training data, the application retrieves relevant document chunks from a vector database and provides them as context to the LLM before generating a response.
+
+The system is designed to provide document-grounded answers while reducing hallucinations through Retrieval-Augmented Generation (RAG).
+
+---
+
+## Live Deployment
+
+### Public API Endpoint
+
+http://72.62.247.229:8005
+
+### Swagger Documentation
+
+http://72.62.247.229:8005/docs
 
 ---
 
@@ -12,14 +26,15 @@ The chatbot answers user questions based exclusively on the provided Agarwal Con
 
 * PDF-based knowledge retrieval
 * Document chunking and vector embeddings
+* Retrieval-Augmented Generation (RAG)
 * ChromaDB vector database
 * HuggingFace sentence-transformer embeddings
 * Groq Llama 3.3 70B model integration
 * FastAPI backend API
 * React (Vite) frontend
-* Retrieval-Augmented Generation (RAG)
 * Context-based response generation
 * Hallucination prevention through document-grounded answers
+* Public VPS deployment
 
 ---
 
@@ -61,11 +76,11 @@ React Frontend
 
 ---
 
-## Tech Stack
+## Technology Stack
 
 ### Backend
 
-* Python
+* Python 3
 * FastAPI
 * LangChain
 * ChromaDB
@@ -77,6 +92,7 @@ React Frontend
 * React
 * Vite
 * JavaScript
+* Axios
 
 ---
 
@@ -86,11 +102,12 @@ React Frontend
 rag-chatbot/
 │
 ├── backend/
-│   ├── ingest.py
 │   ├── main.py
+│   ├── ingest.py
 │   ├── requirements.txt
 │   ├── chroma_db/
 │   └── knowledge/
+│       └── agarwal.pdf
 │
 ├── frontend/
 │   ├── src/
@@ -128,6 +145,12 @@ Windows:
 venv\Scripts\activate
 ```
 
+Linux:
+
+```bash
+source venv/bin/activate
+```
+
 Install dependencies:
 
 ```bash
@@ -140,13 +163,21 @@ Create a `.env` file:
 GROQ_API_KEY=your_groq_api_key
 ```
 
-Run document ingestion:
+---
+
+## Document Ingestion
+
+Run the ingestion script to load the PDF, generate embeddings, and populate ChromaDB.
 
 ```bash
 python ingest.py
 ```
 
-Start FastAPI server:
+This creates the local ChromaDB vector store used during retrieval.
+
+---
+
+## Start Backend
 
 ```bash
 python -m uvicorn main:app --reload
@@ -160,7 +191,7 @@ http://127.0.0.1:8000
 
 ---
 
-### Frontend Setup
+## Frontend Setup
 
 Navigate to frontend folder:
 
@@ -190,9 +221,9 @@ http://localhost:5173
 
 ## API Endpoints
 
-### Health Check
+### GET /
 
-**GET /**
+Health check endpoint.
 
 Response:
 
@@ -202,9 +233,7 @@ Response:
 }
 ```
 
-### Chat Endpoint
-
-**POST /chat**
+### POST /chat
 
 Request:
 
@@ -218,7 +247,7 @@ Response:
 
 ```json
 {
-  "answer": "Generated answer from document context"
+  "answer": "Generated response based on document context"
 }
 ```
 
@@ -237,6 +266,22 @@ Response:
 
 ---
 
+## Deployment
+
+The chatbot backend has been deployed on a Linux VPS using:
+
+* Python Virtual Environment
+* FastAPI
+* Uvicorn
+* ChromaDB
+* Groq API
+
+The deployed API is publicly accessible via:
+
+http://72.62.247.229:8005
+
+---
+
 ## Environment Variables
 
 Create a `.env` file in the backend directory:
@@ -249,7 +294,15 @@ GROQ_API_KEY=your_groq_api_key
 
 ## AI Usage Disclosure
 
-AI tools including ChatGPT were used to assist with frontend generation, debugging, troubleshooting, and development support.
+AI tools, including ChatGPT, were used during development for:
+
+* Frontend generation
+* Debugging support
+* Development assistance
+* Deployment troubleshooting
+* Documentation assistance
+
+This aligns with the assignment requirement encouraging the use of AI tools during development.
 
 ---
 
@@ -261,6 +314,7 @@ AI tools including ChatGPT were used to assist with frontend generation, debuggi
 * Docker deployment
 * Cloud-hosted vector database
 * Streaming responses
+* Chat history persistence
 
 ---
 
