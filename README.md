@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Retrieval-Augmented Generation (RAG) chatbot.
+This project is a Retrieval-Augmented Generation (RAG) chatbot built using FastAPI, LangChain, ChromaDB, HuggingFace Embeddings, Groq LLM, and React.
 
 The chatbot answers user questions using information from a company knowledge base PDF. Instead of relying solely on the language model's training data, the application retrieves relevant document chunks from a vector database and provides them as context to the LLM before generating a response.
 
