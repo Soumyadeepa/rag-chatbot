@@ -10,18 +10,6 @@ The system is designed to provide document-grounded answers while reducing hallu
 
 ---
 
-## Live Deployment
-
-### Public API Endpoint
-
-http://72.62.247.229:8005
-
-### Swagger Documentation
-
-http://72.62.247.229:8005/docs
-
----
-
 ## Features
 
 * PDF-based knowledge retrieval
@@ -34,7 +22,6 @@ http://72.62.247.229:8005/docs
 * React (Vite) frontend
 * Context-based response generation
 * Hallucination prevention through document-grounded answers
-* Public VPS deployment
 
 ---
 
@@ -76,11 +63,11 @@ React Frontend
 
 ---
 
-## Technology Stack
+## Tech Stack
 
 ### Backend
 
-* Python 3
+* Python
 * FastAPI
 * LangChain
 * ChromaDB
@@ -125,19 +112,19 @@ rag-chatbot/
 
 ### Backend Setup
 
-Navigate to backend folder:
+Navigate to the backend folder:
 
 ```bash
 cd backend
 ```
 
-Create virtual environment:
+Create a virtual environment:
 
 ```bash
 python -m venv venv
 ```
 
-Activate virtual environment:
+Activate the virtual environment:
 
 Windows:
 
@@ -193,7 +180,7 @@ http://127.0.0.1:8000
 
 ## Frontend Setup
 
-Navigate to frontend folder:
+Navigate to the frontend folder:
 
 ```bash
 cd frontend
@@ -205,7 +192,7 @@ Install dependencies:
 npm install
 ```
 
-Start frontend:
+Start the frontend:
 
 ```bash
 npm run dev
@@ -261,24 +248,8 @@ Response:
 4. Embeddings are stored in ChromaDB.
 5. User questions are converted into embeddings.
 6. Similar document chunks are retrieved.
-7. Retrieved context is sent to Groq Llama 3.3 70B.
+7. Retrieved context is sent to the Groq Llama 3.3 70B model.
 8. The model generates a response using only the retrieved context.
-
----
-
-## Deployment
-
-The chatbot backend has been deployed on a Linux VPS using:
-
-* Python Virtual Environment
-* FastAPI
-* Uvicorn
-* ChromaDB
-* Groq API
-
-The deployed API is publicly accessible via:
-
-http://72.62.247.229:8005
 
 ---
 
@@ -299,7 +270,7 @@ AI tools, including ChatGPT, were used during development for:
 * Frontend generation
 * Debugging support
 * Development assistance
-* Deployment troubleshooting
+* Troubleshooting
 * Documentation assistance
 
 This aligns with the assignment requirement encouraging the use of AI tools during development.
